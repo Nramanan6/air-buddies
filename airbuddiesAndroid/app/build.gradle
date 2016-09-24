@@ -32,4 +32,7 @@ dependencies {
     compile('com.amazonaws:aws-android-sdk-ddb:2.2.18')
     //I dont know what this does
     compile('com.amazonaws:aws-android-sdk-ddb-mapper:2.2.18')
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
 }
