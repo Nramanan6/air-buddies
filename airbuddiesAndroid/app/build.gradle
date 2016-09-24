@@ -25,5 +25,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:design:24.2.0'
     compile 'com.google.android.gms:play-services:9.6.1'
+    //Add facebook dependency to add login
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile('com.amazonaws:aws-android-sdk-core:2.2.18')
+    // add the DynamoDB SDK and DynamoDB Object Mapper dependency
+    compile('com.amazonaws:aws-android-sdk-ddb:2.2.18')
+    compile('com.amazonaws:aws-android-sdk-ddb-mapper:2.2.18')
 }
