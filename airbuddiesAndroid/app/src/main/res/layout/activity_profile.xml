@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Major"
+            android:text="Age"
             android:id="@+id/degreeLabel"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"/>
@@ -68,15 +68,7 @@
             android:layout_alignEnd="@+id/emailText"
             android:singleLine="true"/>
 
-    <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/degreeSpinner"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/lastNameText"/>
-
-    <EditText
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -114,4 +106,16 @@
             android:layout_alignStart="@+id/userNameText"
             android:layout_alignEnd="@+id/emailText"
             android:singleLine="true"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/userNameText"
+            android:layout_toEndOf="@+id/userNameText" />
 </RelativeLayout>

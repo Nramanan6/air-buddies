@@ -83,7 +83,6 @@ public class ProfileActivity extends AppCompatActivity {
      * form
      */
     private void initializeForm() {
-        Log.v("ProfileActivity", "profileUser is " + profileUser);
         userNameLabel.setText(profileUser.getFirstName() + " Profile");
         editCheckBox.setOnCheckedChangeListener(new CompoundButton
             .OnCheckedChangeListener() {
