@@ -30,5 +30,6 @@ dependencies {
     compile('com.amazonaws:aws-android-sdk-core:2.2.18')
     // add the DynamoDB SDK and DynamoDB Object Mapper dependency
     compile('com.amazonaws:aws-android-sdk-ddb:2.2.18')
+    //I dont know what this does
     compile('com.amazonaws:aws-android-sdk-ddb-mapper:2.2.18')
 }
