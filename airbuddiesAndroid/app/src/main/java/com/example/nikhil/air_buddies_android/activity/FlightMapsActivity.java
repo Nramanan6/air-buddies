@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.nikhil.air_buddies_android.City;
 import com.example.nikhil.air_buddies_android.R;
 import com.example.nikhil.air_buddies_android.entity.Profile;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
+import java.util.Map;
 
 public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
