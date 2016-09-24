@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.nikhil.air_buddies_android.City;
+import com.example.nikhil.air_buddies_android.Link;
 import com.example.nikhil.air_buddies_android.R;
 import com.example.nikhil.air_buddies_android.entity.Profile;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,8 +18,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -45,8 +48,16 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
         if (toolbar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        //Populate map with cities and people on this flight flying from them
+
+        interestingPeople = new HashMap<>();
+
+
+
     }
 
+    //Methods to display the toolbar and its options
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_flightmap, menu);

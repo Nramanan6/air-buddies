@@ -7,13 +7,14 @@ import java.util.List;
  */
 public class Route {
 
-    private List<Integer> flights;
+    private List<Link> legs;
 
-    public Route(List<Integer> flightNums) {
-        this.flights = flightNums;
+
+    public Route(List<Link> legs) {
+        this.legs = legs;
     }
 
-    public List<Integer> getFlightNums() {
-        return flights;
+    public List<Link> getLegs() {
+        return legs;
     }
 }

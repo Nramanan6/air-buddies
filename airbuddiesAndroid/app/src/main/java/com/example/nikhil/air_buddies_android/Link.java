@@ -7,10 +7,12 @@ public class Link {
 
     private City start;
     private City dest;
+    private int flightNo;
 
-    public Link(City start, City dest) {
+    public Link(City start, City dest, int flightNo) {
         this.start = start;
         this.dest = dest;
+        this.flightNo = flightNo;
     }
 
     public City getStart() {
@@ -19,5 +21,9 @@ public class Link {
 
     public City getDest() {
         return dest;
+    }
+
+    public int getFlightNo() {
+        return flightNo;
     }
 }
