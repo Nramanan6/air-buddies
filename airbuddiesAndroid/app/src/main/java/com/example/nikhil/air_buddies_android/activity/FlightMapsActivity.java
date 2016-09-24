@@ -1,4 +1,4 @@
-package com.example.nikhil.air_buddies_android;
+package com.example.nikhil.air_buddies_android.activity;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.nikhil.air_buddies_android.R;
+import com.example.nikhil.air_buddies_android.entity.Profile;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -14,11 +16,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
 public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private int flightNum;
     private String currCity;
+
+    private Map<City, List<Profile>> interestingPeople;
+    private Set<Link> paths;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

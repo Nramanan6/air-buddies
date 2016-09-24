@@ -39,7 +39,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".FlightMapsActivity"
+            android:name=".activity.FlightMapsActivity"
             android:label="@string/title_activity_flight_maps"></activity>
     </application>
 
