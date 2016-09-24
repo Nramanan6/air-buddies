@@ -1,5 +1,7 @@
 package com.example.nikhil.air_buddies_android.entity;
 
+import com.example.nikhil.air_buddies_android.Route;
+
 import java.io.Serializable;
 
 public class Profile implements Serializable {
@@ -8,6 +10,7 @@ public class Profile implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
+    private Route trip;
 
     /**
      * Profile constructor
@@ -17,10 +20,11 @@ public class Profile implements Serializable {
      * @param email the user's email
      */
     public Profile(String firstName, String lastName, String major, String
-            email) {
+            email, Route trip) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.trip = trip;
     }
 
     /**
@@ -85,6 +89,14 @@ public class Profile implements Serializable {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Route getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Route trip) {
+        this.trip = trip;
     }
 
     @Override

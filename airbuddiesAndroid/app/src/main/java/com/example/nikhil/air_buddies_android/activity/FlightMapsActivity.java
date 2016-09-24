@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.example.nikhil.air_buddies_android.City;
 import com.example.nikhil.air_buddies_android.Link;
 import com.example.nikhil.air_buddies_android.R;
+import com.example.nikhil.air_buddies_android.Route;
 import com.example.nikhil.air_buddies_android.entity.Profile;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +33,7 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
 
     private Map<City, List<Profile>> interestingPeople;
     private Set<Link> paths;
+    private List<City> cities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +52,33 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        //Populate map with cities and people on this flight flying from them
+        //get all the passengers
 
+        //get all the cities linked to this flight
+        for (Link edge : paths) {
+            if (!cities.contains(edge.getStart())) {
+                cities.add(edge.getStart());
+            }
+            if (!cities.contains(edge.getDest())) {
+                cities.add(edge.getDest());
+            }
+        }
+
+        //Populate map with cities and people on this flight flying from them
+        Map<Profile, Route> flightData = AWSGimmeData();
         interestingPeople = new HashMap<>();
+        for (Profile p : flightData.keySet()) {
+            for (Link edge : p.getTrip().getLegs()) {
+                List<Profile> temp = new ArrayList<>();
+                if (!interestingPeople.keySet().contains(edge.getStart())) {
+                    temp.add(p);
+                    interestingPeople.put(edge.getStart(), temp);
+                } else {
+                    temp.addAll(interestingPeople.get(edge.getStart()));
+                    temp.add(p);
+                }
+            }
+        }
 
 
 
@@ -98,5 +125,9 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    private void markCities() {
+
     }
 }
