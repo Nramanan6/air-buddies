@@ -7,10 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.nikhil.air_buddies_android.City;
-import com.example.nikhil.air_buddies_android.Link;
+import com.example.nikhil.air_buddies_android.entity.City;
+import com.example.nikhil.air_buddies_android.entity.Link;
 import com.example.nikhil.air_buddies_android.R;
-import com.example.nikhil.air_buddies_android.Route;
+import com.example.nikhil.air_buddies_android.entity.Route;
 import com.example.nikhil.air_buddies_android.entity.Profile;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
