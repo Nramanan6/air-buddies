@@ -1,7 +1,5 @@
 package com.example.nikhil.air_buddies_android.entity;
 
-import com.example.nikhil.air_buddies_android.Route;
-
 import java.io.Serializable;
 
 public class Profile implements Serializable {
