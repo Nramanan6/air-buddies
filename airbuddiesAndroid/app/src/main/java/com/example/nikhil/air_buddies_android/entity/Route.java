@@ -1,4 +1,4 @@
-package com.example.nikhil.air_buddies_android;
+package com.example.nikhil.air_buddies_android.entity;
 
 import java.util.List;
 
