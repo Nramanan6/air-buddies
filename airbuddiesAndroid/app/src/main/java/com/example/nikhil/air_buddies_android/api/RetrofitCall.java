@@ -15,8 +15,7 @@ import retrofit2.http.Query;
 public interface RetrofitCall {
 
     @GET("search/flight")
-    Call<Link> getLinkInfo(
-    );
+    Call<Link> getLinkInfo();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://demo30-test.apigee.net/v1/hack/")
