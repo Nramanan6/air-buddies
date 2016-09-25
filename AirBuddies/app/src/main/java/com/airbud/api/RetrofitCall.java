@@ -14,16 +14,14 @@ import retrofit2.http.Query;
 
 public interface RetrofitCall {
 
-    @GET("search/flight")
+    @GET("status")
     Call<Link> getLinkInfo(
             @Query("flightNumber") String flightNumber,
-            @Query("flightOriginDate") String originDate,
-            @Query("Name:") String apikey,
-            @Query("Value:") String apivalue
-    );
+            @Query("flightOriginDate") String flightDate);
 
-    public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://demo30-test.apigee.net/v1/hack/")
+    public static final String BASE_URL = "https://demo30-test.apigee.net/v1/hack/";
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

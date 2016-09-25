@@ -44,7 +44,7 @@ public class FlightInfoActivity extends AppCompatActivity {
     public void addAnotherFlight(View v) {
         RetrofitCall retrofitCall = RetrofitCall.retrofit.create(RetrofitCall.class);
         final Call<Link> call =
-                retrofitCall.getLinkInfo(FlightNoEnter.getText().toString(), DateEnter.getText().toString(), apikey, apivalue);
+                retrofitCall.getLinkInfo(FlightNoEnter.getText().toString(), DateEnter.getText().toString());
         call.enqueue(new Callback<Link>() {
             @Override
             public void onResponse(Call<Link> call, Response<Link> response) {

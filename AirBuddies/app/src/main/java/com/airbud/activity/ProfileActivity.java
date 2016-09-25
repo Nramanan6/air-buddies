@@ -41,13 +41,47 @@ public class ProfileActivity extends AppCompatActivity {
         description = (EditText) findViewById(R.id.profileDescription);
         pic = (ImageView) findViewById(R.id.propic);
 
+<<<<<<< HEAD
         submitButton = (Button) findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
+=======
+    /**
+     * disables all elements in the profile form
+     */
+    private void disableForm() {
+        disableTextField(firstNameText);
+        disableTextField(lastNameText);
+        disableTextField(emailText);
+        cancelFocus();
+    }
+
+    /**
+     * enables all elements in the profile form
+     */
+    private void enableForm() {
+        enableTextField(firstNameText);
+        enableTextField(lastNameText);
+        enableTextField(emailText);
+    }
+
+    /**
+     * Retrieves user parameter from passed bundle and uses it to initialize
+     * form
+     */
+    private void initializeForm() {
+        userNameLabel.setText(profileUser.getFirstName() + " Profile");
+        editCheckBox.setOnCheckedChangeListener(new CompoundButton
+            .OnCheckedChangeListener() {
+>>>>>>> 37ea29e5220e7f449b7fb9e2b3511a358f01de6b
             @Override
             public void onClick(View v) {
                 validateProfile();
             }
         });
+<<<<<<< HEAD
+=======
+        cancelFocus();
+>>>>>>> 37ea29e5220e7f449b7fb9e2b3511a358f01de6b
         populateFields();
     }
 
@@ -97,17 +131,37 @@ public class ProfileActivity extends AppCompatActivity {
      * the fields
      */
     private void populateFields() {
+<<<<<<< HEAD
         name.setText(profileUser.getName());
         pic.setImageBitmap(profileUser.getBm());
 
+=======
+        Profile userProfile = profileUser;
+        firstNameText.setText(userProfile.getFirstName());
+        lastNameText.setText(userProfile.getLastName());
+        emailText.setText(userProfile.getEmail());
+>>>>>>> 37ea29e5220e7f449b7fb9e2b3511a358f01de6b
     }
 
     /**
      * Updates the Profile object associated with the user
      */
     private void updateProfile() {
+<<<<<<< HEAD
         Profile updatedPro = new Profile(mName, mAge, null, profileUser.getBm(), mDescription);
         //store into AWS
+=======
+        if (validateProfile()) {
+            final String firstName = firstNameText.getText().toString();
+            final String lastName = lastNameText.getText().toString();
+            final String email = emailText.getText().toString();
+            final Profile uProfile = profileUser;
+            uProfile.setFirstName(firstName);
+            uProfile.setLastName(lastName);
+            uProfile.setEmail(email);
+            finish();
+        }
+>>>>>>> 37ea29e5220e7f449b7fb9e2b3511a358f01de6b
     }
 
 

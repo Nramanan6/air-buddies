@@ -57,9 +57,6 @@ public class SignInActivity extends Activity {
                     finish();
                 }
             });
-
-            Intent goToNextActivity = new Intent(getApplicationContext(), ProfileActivity.class);
-            startActivity(goToNextActivity);
         }
 
         /**
