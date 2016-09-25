@@ -1,4 +1,6 @@
-package com.airbud.entity;
+package com.example.nikhil.air_buddies_android.entity;
+
+import android.graphics.Bitmap;
 
 import java.io.Serializable;
 
@@ -7,22 +9,24 @@ public class Profile implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
-    private String email;
     private Route trip;
+    private int age;
+    private Bitmap bm;
+
 
     /**
      * Profile constructor
      * @param firstName the first name of the user
      * @param lastName the last name of the user
-     * @param major the user's major
-     * @param email the user's email
+     * @param age the user's age
+     * @param bm the user's photo bitmap
      */
-    public Profile(String firstName, String lastName, String major, String
-            email, Route trip) {
+    public Profile(String firstName, String lastName, int age, Route trip, Bitmap bm) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.age = age;
         this.trip = trip;
+        this.bm = bm;
     }
 
     /**
@@ -73,28 +77,28 @@ public class Profile implements Serializable {
         this.lastName = lastName;
     }
 
-    /**
-     * getter for email
-     * @return email the email to get
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * set email
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Route getTrip() {
         return trip;
     }
 
     public void setTrip(Route trip) {
         this.trip = trip;
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Bitmap getBm() {
+        return bm;
+    }
+
+    public void setBm() {
+        this.bm = bm;
     }
 
     @Override
