@@ -117,53 +117,13 @@ public class SignInActivity extends Activity {
                 @Override
                 public void run() {
                     Log.d(LOG_TAG, "Launching Main Activity...");
-                    startActivity(new Intent(SignInActivity.this, MainActivity.class)
+                    startActivity(new Intent(SignInActivity.this, ProfileActivity.class)
                             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     // finish should always be called on the main thread.
                     finish();
                 }
             });
 
-            IdentityManager id = AWSMobileClient.defaultMobileClient().getIdentityManager();
-            Profile person = new Profile(id.getUserName(), null, 0, null, id.getUserImage());
-            insertData(person);
-            Intent goToNextActivity = new Intent(SignInActivity.this, ProfileActivity.class);
-            startActivity(goToNextActivity);
-
-        }
-
-
-
-        public void insertData(Profile Person) {
-            // Fetch the default configured DynamoDB ObjectMapper
-            final DynamoDBMapper dynamoDBMapper = AWSMobileClient.defaultMobileClient().getDynamoDBMapper();
-            final PersonDO note = new PersonDO(); // Initialize the Notes Object
-
-
-
-//            HashMap<String, Profile> map = new HashMap<String, Profile>();
-            IdentityManager id = AWSMobileClient.defaultMobileClient().getIdentityManager();
-//            map.put(id, Person);
-
-            // The userId has to be set to user's Cognito Identity Id for private / protected tables.
-            // User's Cognito Identity Id can be fetched by using:
-            // AWSMobileClient.defaultMobileClient().getIdentityManager().getCachedUserID()
-            note.setUserId(AWSMobileClient.defaultMobileClient().getIdentityManager().getCachedUserID());
-            note.setAge(0.0);
-            note.setDescription("HI");
-            note.setName(id.getUserName());
-//            note.setImage(null);
-            Log.d("TEST", "" +id.isUserSignedIn());
-            Log.d("TEST1", "" +note.getDescription());
-            AmazonClientException lastException = null;
-
-            try {
-                dynamoDBMapper.save(note);
-                System.out.println("Success!");
-            } catch (final AmazonClientException ex) {
-                Log.e(LOG_TAG, "Failed saving item : " + ex.getMessage(), ex);
-                lastException = ex;
-            }
 
         }
 
