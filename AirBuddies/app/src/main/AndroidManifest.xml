@@ -31,7 +31,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.airbud.activity.FlightMapsActivity"
+            android:name="com.airbud.activity.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -44,9 +44,9 @@
             android:name=".activity.SignInActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_sign_in" />
-        <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/title_activity_main" />
+        <!--<activity-->
+            <!--android:name=".activity.MainActivity"-->
+            <!--android:label="@string/title_activity_main" />-->
 
         <!-- BEGIN - FACEBOOK SIGN-IN -->
 
@@ -64,10 +64,15 @@
             android:value="@string/google_maps_key" />
         <!-- END - FACEBOOK SIGN-IN -->
 
-        <!--<activity-->
-            <!--android:name="com.airbud.activity.FlightMapsActivity"-->
-            <!--android:label="@string/title_activity_flight_maps_activities" />-->
+        <activity
+            android:name="com.airbud.activity.FlightMapsActivity"
+            android:label="@string/title_activity_flight_maps_activities" />
+        <activity
+            android:name="com.airbud.activity.ProfileActivity"
+            android:label="Profile" />
 
+        <activity android:name="com.airbud.activity.SplashActivity"
+            android:label="Activity" />
     </application>
 
 </manifest>

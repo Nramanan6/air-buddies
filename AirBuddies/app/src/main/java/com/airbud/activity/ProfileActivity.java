@@ -83,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
      * form
      */
     private void initializeForm() {
-        userNameLabel.setText(profileUser.getFirstName() + " Profile");
+        //userNameLabel.setText(profileUser.getFirstName() + " Profile");
         editCheckBox.setOnCheckedChangeListener(new CompoundButton
             .OnCheckedChangeListener() {
             @Override
@@ -98,6 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        onPause();
         cancelFocus();
         populateFields();
         disableForm();
@@ -140,9 +141,9 @@ public class ProfileActivity extends AppCompatActivity {
      */
     private void populateFields() {
         Profile userProfile = profileUser;
-        firstNameText.setText(userProfile.getFirstName());
-        lastNameText.setText(userProfile.getLastName());
-        emailText.setText(userProfile.getEmail());
+        //firstNameText.setText(userProfile.getFirstName());
+        //lastNameText.setText(userProfile.getLastName());
+        //emailText.setText(userProfile.getAge());
     }
 
     /**
@@ -156,7 +157,7 @@ public class ProfileActivity extends AppCompatActivity {
             final Profile uProfile = profileUser;
             uProfile.setFirstName(firstName);
             uProfile.setLastName(lastName);
-            uProfile.setEmail(email);
+            //uProfile.setEmail(email);
             finish();
         }
     }
