@@ -2,11 +2,14 @@ package com.airbud.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,97 +22,33 @@ public class ProfileActivity extends AppCompatActivity {
 
     private Profile profileUser;
 
-    private TextView userNameLabel;
-    private EditText firstNameText;
-    private EditText lastNameText;
-    private EditText emailText;
-    private CheckBox editCheckBox;
+    private ImageView pic;
+    private EditText name;
+    private EditText age;
+    private EditText description;
+    Button submitButton;
+
+    private String mName;
+    private String mDescription;
+    private int mAge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        userNameLabel = (TextView) findViewById(R.id.userNameText);
-        firstNameText = (EditText) findViewById(R.id.firstNameText);
-        lastNameText = (EditText) findViewById(R.id.lastNameText);
-        emailText = (EditText) findViewById(R.id.emailText);
-        editCheckBox = (CheckBox) findViewById(R.id.editCheckBox);
-        initializeForm();
-    }
+        name = (EditText) findViewById(R.id.profileName);
+        age = (EditText) findViewById(R.id.profileAge);
+        description = (EditText) findViewById(R.id.profileDescription);
+        pic = (ImageView) findViewById(R.id.propic);
 
-    /**
-     * Helper method for enable editable on an EditText
-     *
-     * @param e EditText view to enable
-     */
-    private void enableTextField(EditText e) {
-        e.setFocusable(true);
-        e.setClickable(true);
-        e.setFocusableInTouchMode(true);
-    }
-
-    /**
-     * Helper method for disabling editable on an EditText
-     *
-     * @param e EditText view to disable
-     */
-    private void disableTextField(EditText e) {
-        e.setFocusable(false);
-        e.setClickable(false);
-        e.setFocusableInTouchMode(false);
-    }
-
-    /**
-     * disables all elements in the profile form
-     */
-    private void disableForm() {
-        disableTextField(firstNameText);
-        disableTextField(lastNameText);
-        disableTextField(emailText);
-        cancelFocus();
-    }
-
-    /**
-     * enables all elements in the profile form
-     */
-    private void enableForm() {
-        enableTextField(firstNameText);
-        enableTextField(lastNameText);
-        enableTextField(emailText);
-    }
-
-    /**
-     * Retrieves user parameter from passed bundle and uses it to initialize
-     * form
-     */
-    private void initializeForm() {
-        //userNameLabel.setText(profileUser.getFirstName() + " Profile");
-        editCheckBox.setOnCheckedChangeListener(new CompoundButton
-            .OnCheckedChangeListener() {
+        submitButton = (Button) findViewById(R.id.submit_button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean
-                isChecked) {
-                Log.v("ProfileActivity", "Edit checked: " + (isChecked ?
-                    "True" : "False"));
-                if (isChecked) {
-                    enableForm();
-                } else {
-                    disableForm();
-                }
+            public void onClick(View v) {
+                validateProfile();
             }
         });
-        onPause();
-        cancelFocus();
         populateFields();
-        disableForm();
-    }
-
-    /**
-     * Cancels focus from all form elements
-     */
-    private void cancelFocus() {
-        final RelativeLayout formLayout = (RelativeLayout) findViewById(R.id.profileLayout);
-        formLayout.requestFocus();
     }
 
     /**
@@ -118,21 +57,39 @@ public class ProfileActivity extends AppCompatActivity {
      * @return true if the profile was validated
      */
     private boolean validateProfile() {
-        final String firstName = firstNameText.getText().toString();
-        final String lastName = lastNameText.getText().toString();
-        final String email = emailText.getText().toString();
-        if ("".equals(firstName)) {
-            firstNameText.setError("Enter a first name");
-            return false;
-        } else if ("".equals(lastName)) {
-            lastNameText.setError("Enter a last name");
-            return false;
-        } else if ("".equals(email) || !email.contains("@")) {
-            emailText.setError("Enter a valid email address");
-            return false;
+        name.setError(null);
+        age.setError(null);
+        description.setError(null);
+
+        boolean cancel = false;
+        View focusView = null;
+
+        mName = name.getText().toString();
+        mAge = Integer.parseInt(age.getText().toString());
+        mDescription = description.getText().toString();
+
+        if (mAge > 0) {
+            age.setError("Invalid Age");
+            focusView = age;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(mDescription)) {
+            description.setError(getString(R.string.error_field_required));
+            focusView = description;
+            cancel = true;
+        }
+
+        if (cancel) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+            return cancel;
         } else {
+            updateProfile();
             return true;
         }
+
     }
 
     /**
@@ -140,33 +97,18 @@ public class ProfileActivity extends AppCompatActivity {
      * the fields
      */
     private void populateFields() {
-        Profile userProfile = profileUser;
-        //firstNameText.setText(userProfile.getFirstName());
-        //lastNameText.setText(userProfile.getLastName());
-        //emailText.setText(userProfile.getAge());
+        name.setText(profileUser.getName());
+        pic.setImageBitmap(profileUser.getBm());
+
     }
 
     /**
      * Updates the Profile object associated with the user
      */
     private void updateProfile() {
-        if (validateProfile()) {
-            final String firstName = firstNameText.getText().toString();
-            final String lastName = lastNameText.getText().toString();
-            final String email = emailText.getText().toString();
-            final Profile uProfile = profileUser;
-            uProfile.setFirstName(firstName);
-            uProfile.setLastName(lastName);
-            //uProfile.setEmail(email);
-            finish();
-        }
+        Profile updatedPro = new Profile(mName, mAge, null, profileUser.getBm(), mDescription);
+        //store into AWS
     }
 
-    /**
-     * Saves the profile entered
-     * @param v the current view
-     */
-    public void saveProfile(View v) {
-        updateProfile();
-    }
+
 }
