@@ -18,7 +18,7 @@ import com.airbud.entity.Link;
 import com.airbud.R;
 import com.airbud.entity.ProfileAdapter;
 import com.airbud.entity.Route;
-import com.airbud.entity.Profile;
+import com.airbud.entity.
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

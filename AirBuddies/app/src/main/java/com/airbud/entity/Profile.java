@@ -1,4 +1,4 @@
-package com.example.nikhil.air_buddies_android.entity;
+package com.airbud.entity;
 
 import android.graphics.Bitmap;
 

@@ -1,4 +1,4 @@
-package com.example.nikhil.air_buddies_android.entity;
+package com.airbud.entity;
 
 import com.google.android.gms.maps.model.LatLng;
 
