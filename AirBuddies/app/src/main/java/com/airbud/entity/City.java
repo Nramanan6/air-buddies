@@ -1,6 +1,7 @@
 package com.airbud.entity;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Victor on 9/24/2016.

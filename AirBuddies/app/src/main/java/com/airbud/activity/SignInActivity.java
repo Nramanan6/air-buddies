@@ -123,11 +123,13 @@ public class SignInActivity extends Activity {
                     finish();
                 }
             });
+
             IdentityManager id = AWSMobileClient.defaultMobileClient().getIdentityManager();
             Profile person = new Profile(id.getUserName(), null, 0, null, id.getUserImage());
             insertData(person);
             Intent goToNextActivity = new Intent(SignInActivity.this, ProfileActivity.class);
             startActivity(goToNextActivity);
+
         }
 
 

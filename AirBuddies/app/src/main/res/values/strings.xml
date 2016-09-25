@@ -1,5 +1,7 @@
 <resources>
 
+  <string name="error_field_required">Field cannot be empty</string>
+
   <!-- CUSTOMIZE THESE FOR YOUR APP -->
 
   <string name="app_name">AirBuddies</string>

@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -69,6 +70,9 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
         }
 
         locs = new ArrayList<>();
+        paths = new HashSet<>();
+        cities = new HashSet<>();
+        interestingPeople = new HashMap<>();
 
         mMap.setOnMapClickListener(this);
 
@@ -90,8 +94,6 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
         }
 
         //Populate map with cities and people
-
-        interestingPeople = new HashMap<>();
         for (Profile p : flightData) {
             for (Link edge : p.getTrip().getLegs()) {
                 List<Profile> temp = new ArrayList<>();
