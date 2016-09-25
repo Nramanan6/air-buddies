@@ -1,21 +1,23 @@
-package com.airbud.entity;
+package com.example.nikhil.air_buddies_android.entity;
+
+import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by Victor on 9/24/2016.
  */
 public class City {
 
-    private int lat;
-    private int longi;
+    private double lat;
+    private double longi;
     private String name;
 
-    public City (int lat, int longi, String name) {
+    public City (double lat, double longi, String name) {
         this.lat = lat;
         this.longi = longi;
         this.name = name;
     }
 
-    public int getLat() {
+    public double getLat() {
         return lat;
     }
 
@@ -23,7 +25,7 @@ public class City {
         this.lat = lat;
     }
 
-    public int getLongi() {
+    public double getLongi() {
         return longi;
     }
 
@@ -37,5 +39,9 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public LatLng getCoord() {
+        return new LatLng(lat, longi);
     }
 }
