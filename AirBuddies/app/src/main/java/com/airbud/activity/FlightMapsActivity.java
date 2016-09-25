@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentActivity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,7 +49,7 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
 
     private List<Marker> locs;
     private LatLngBounds.Builder builder;
-   // private RecyclerView rv;
+    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +77,9 @@ public class FlightMapsActivity extends AppCompatActivity implements OnMapReadyC
         //TODO:load all profiles that have this flight number into the list
 
         //RECYCLERVIEW STUFF
-//        rv = (RecyclerView)findViewById(R.id.rv);
-//        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
-//        rv.setLayoutManager(llm);
+        rv = (RecyclerView)findViewById(R.id.rv);
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(llm);
 
         builder = LatLngBounds.builder();
 
